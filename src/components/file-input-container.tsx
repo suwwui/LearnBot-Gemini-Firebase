@@ -77,7 +77,7 @@ export const FileInputContainer: React.FC<FileInputContainerProps> = ({
           ...
         </p>
       ) : (
-        <button className="text-gray-300">
+        <button className="text-cyan-900">
           Drag 'n' drop some files here, or click to select files to upload.
         </button>
       )}

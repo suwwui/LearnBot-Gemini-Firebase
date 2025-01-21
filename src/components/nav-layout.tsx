@@ -51,7 +51,7 @@ const NavLayout: React.FC<NavLayoutProps> = ({ children }) => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <nav className="bg-gray-800">
+      <nav className="bg-cyan-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
@@ -72,7 +72,7 @@ const NavLayout: React.FC<NavLayoutProps> = ({ children }) => {
               <div className="ml-3 relative">
                 <div>
                   <button
-                    className="max-w-xs bg-gray-800 rounded-full flex items-center text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                    className="max-w-xs bg-cyan-700 rounded-full flex items-center text-white text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
                     id="user-menu"
                     aria-haspopup="true"
                     onClick={toggleDropdown}

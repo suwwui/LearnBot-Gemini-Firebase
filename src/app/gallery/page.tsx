@@ -161,10 +161,11 @@ export default function Gallery() {
 
   return (
     <div className="flex flex-col min-h-screen items-center justify-center">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
       {images.map((image) => (
         <div
           key={image.id}
-          className={`w-full flex justify-start items-center gap-4 my-4 px-4 group ${
+          className={`flex flex-col justify-start items-center  my-4 px-4 group ${
             image.published ? "" : "bg-red-900"
           }`}
         >
@@ -196,6 +197,7 @@ export default function Gallery() {
           )}
         </div>
       ))}
+      </div>
 
       <FileInputContainer onFileUpload={uploadImage} progress={progress} />
     </div>

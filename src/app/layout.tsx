@@ -16,6 +16,7 @@
 
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import React from 'react';
 import "./globals.css";
 import NavLayout from "@/components/nav-layout";
 import FirebaseUserProvider from "../lib/firebase-user";
@@ -27,8 +28,8 @@ interface RootLayoutProps {
 }
 
 export const metadata: Metadata = {
-  title: "Friendly Conf",
-  description: "Build AI-powered web apps with Gemini API Firebase Extensions",
+  title: "Edusys",
+  description: "Your Personalised Learning with Gemini API Firebase Extensions",
 };
 
 const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
@@ -36,7 +37,7 @@ const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
     <html lang="en">
       <body className={inter.className}>
         <FirebaseUserProvider>
-          <NavLayout children={children} />
+            <NavLayout>{children}</NavLayout>
         </FirebaseUserProvider>
       </body>
     </html>

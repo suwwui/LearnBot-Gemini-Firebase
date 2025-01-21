@@ -29,6 +29,7 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 import ChatContainer from "@/components/chat-container";
+import ChatHistory from "@/components/chat-history";
 import { FirebaseUserContext } from "@/lib/firebase-user";
 import { preparePrompt } from "@/lib/prepare-prompt";
 import {
@@ -67,8 +68,6 @@ const ChatPage = () => {
       (snapshot) => {
         const messages = snapshot.docs.map((doc) => ({
           id: doc.id,
-          // TODO: 2. Replace code next line with this:
-          // ...prepareMessage(doc.data()),
           ...prepareMessage(doc.data()),
         }));
         console.log(
@@ -100,12 +99,15 @@ const ChatPage = () => {
     await deleteDoc(doc(messagesCollection, messageId));
   };
 
+ 
+
   return (
-    <ChatContainer
-      messages={messages}
-      onMessageSubmit={sendMessage}
-      onMessageDelete={deleteMessage}
-    ></ChatContainer>
+      <ChatContainer
+        messages={messages}
+        onMessageSubmit={sendMessage}
+        onMessageDelete={deleteMessage}
+      />
+    
   );
 };
 
