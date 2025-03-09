@@ -38,14 +38,6 @@ import {
   prepareMessage,
 } from "@/lib/message";
 
-/**
- * A portal page with an ai chat.
- *
- * Using <ChatContainer>` component.
- *
- * Using `messages` (state variable) subscribed to Firestore collection `messages`
- * with `use` hook.
- */
 const ChatPage = () => {
   const [messages, setMessages] = useState<MessageData[]>([]);
 
@@ -83,12 +75,9 @@ const ChatPage = () => {
   }, [uid]);
 
   const sendMessage = async (userMsg: string) => {
-    // Display the user message immediately.
     setMessages((prev) => [...prev, { prompt: userMsg }]);
-    // Send a message to Gemini Extension.
     const newMessageRef = await addDoc(messagesCollection, {
-      // TODO: 1. Replace code next line with this:
-      // prompt: preparePrompt(userMsg, messages),
+      
       prompt: preparePrompt(userMsg, messages),
     });
     console.log("New message added with ID: ", newMessageRef.id);

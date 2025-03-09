@@ -24,13 +24,6 @@ export interface NavLayoutProps {
   children: React.ReactNode;
 }
 
-/**
- * A React layout with a toolbar with:
- * - navigation on the left side, populated from 'navItems' array: Home | Gallery
- * - user dropdown menu, on the right side: Username > Profile | Logout
- *
- * Using Tailwind for all styling.
- */
 const NavLayout: React.FC<NavLayoutProps> = ({ children }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const user = useContext(FirebaseUserContext);
@@ -38,13 +31,14 @@ const NavLayout: React.FC<NavLayoutProps> = ({ children }) => {
   const navItems = [
     { name: "Home", href: "/" },
     { name: "Gallery", href: "/gallery" },
+    { name: "Noteees", href: "/notes"},
   ];
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
-  const logoutClick: MouseEventHandler = (event) => {
+    const logoutClick: MouseEventHandler = (event) => {
     event.preventDefault();
     user.signOut?.();
   };

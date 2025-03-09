@@ -27,6 +27,10 @@ import {
 import React, { useEffect, useState } from "react";
 import SignInContainer from "@/components/signin-container";
 import "@/lib/firebase.config";
+import { getFirestore } from 'firebase/firestore';
+import { initializeApp } from 'firebase/app';
+
+
 
 export interface FirebaseUser {
   isLoading?: boolean;
@@ -35,6 +39,7 @@ export interface FirebaseUser {
   signInWithGoogle?: () => Promise<UserCredential>;
   signOut?: () => Promise<void>;
 }
+
 
 export const FirebaseUserContext = React.createContext<FirebaseUser>({
   isLoading: true,

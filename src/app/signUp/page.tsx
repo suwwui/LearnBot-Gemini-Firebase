@@ -1,22 +1,13 @@
-
-import React, { useContext, useState } from "react";
-import { FirebaseUserContext } from "@/lib/firebase-user";
+'use client'
+import React, { useState } from "react";
 import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { Link,} from "react-router-dom";
+import { Link } from "react-router-dom";
 
-
-/**
- * Sign in with Google button, using Firebase Auth
- *
- * Using Tailwind for all styling.
- */
-const SignInContainer: React.FC = ({}) => {
-  // const user = useContext(FirebaseUserContext);
+const Register: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const auth = getAuth();
-  // const navigate = useNavigate()
 
   const handleEmailSignUp = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -26,7 +17,7 @@ const SignInContainer: React.FC = ({}) => {
     } catch (error: any) {
       setError(error.message);
     }
-  }
+  };
 
   const handleGoogleSignUp = async () => {
     try {
@@ -38,13 +29,10 @@ const SignInContainer: React.FC = ({}) => {
     }
   };
 
-  return(
-    <div className="flex min-h-screen items-center justify-center bg-cyan-700">
-      <div className= "bg-cyan-50 p-8 rounded-md shadow-md w-96">
-      <h2 className="text-black font-bold mb-4 justify-center items-center flex">Create your Account</h2>
-        <h4 className="text-center text-black mb-4 justify-center items-center flex">
-            Start your learning journey with Edusys &#128173;
-        </h4>
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-gray-900">
+      <div className="bg-white p-8 rounded-md shadow-md w-96">
+        <h2 className="text-black text-xl mb-4 justify-center items-center">Create your Account</h2>
         {error && <p className="text-red-500">{error}</p>}
         <form onSubmit={handleEmailSignUp} className="mb-4">
           <div className="mb-2">
@@ -53,7 +41,7 @@ const SignInContainer: React.FC = ({}) => {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="text-black border rounded w-full py-2 px-3"
+              className="border rounded w-full py-2 px-3"
               required
             />
           </div>
@@ -63,32 +51,32 @@ const SignInContainer: React.FC = ({}) => {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="text-black border rounded w-full py-2 px-3"
+              className="border rounded w-full py-2 px-3"
               required
             />
           </div>
           <button
             type="submit"
-            className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 w-full rounded-md justify-center items-center flex"
+            className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md w-full flex justify-center items-center mb-4"
           >
-            Sign In 
+            Sign Up with Email
           </button>
         </form>
-        <hr className="mb-4" />
         <button
           onClick={handleGoogleSignUp}
-          className="bg-red-500 hover:bg-red-600 text-white w-full px-4 py-2 rounded-md"
+          className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-md w-full flex justify-center items-center"
         >
-          Sign In with Google
+          Sign Up with Google
         </button>
-         {/* <p className="text-center text-black mb-4 justify-center items-center flex">
-          New User? 
-          <Link to="/register" className="text-blue-500 hover:text-blue-600"> Sign Up
+        <p className="text-gray-700 mt-4">
+          Already have an account?{" "}
+          <Link to="/signin" className="text-blue-500 hover:underline">
+            Sign In
           </Link>
-        </p> */}
+        </p>
       </div>
     </div>
   );
 };
 
-export default SignInContainer;
+export default Register;

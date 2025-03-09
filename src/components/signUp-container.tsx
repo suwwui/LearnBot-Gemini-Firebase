@@ -1,16 +1,10 @@
-
+'use client'
 import React, { useContext, useState } from "react";
 import { FirebaseUserContext } from "@/lib/firebase-user";
 import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { Link,} from "react-router-dom";
+import { Link} from "react-router-dom";
 
-
-/**
- * Sign in with Google button, using Firebase Auth
- *
- * Using Tailwind for all styling.
- */
-const SignInContainer: React.FC = ({}) => {
+const SignUpContainer: React.FC<{}> = ({}) => {
   // const user = useContext(FirebaseUserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -81,14 +75,12 @@ const SignInContainer: React.FC = ({}) => {
         >
           Sign In with Google
         </button>
-         {/* <p className="text-center text-black mb-4 justify-center items-center flex">
-          New User? 
-          <Link to="/register" className="text-blue-500 hover:text-blue-600"> Sign Up
-          </Link>
-        </p> */}
+        <p className="text-center text-black mb-4 justify-center items-center flex">
+            Alrady have an account? <Link to="/signIn">Login</Link> 
+        </p>
       </div>
     </div>
   );
 };
 
-export default SignInContainer;
+export default SignUpContainer;

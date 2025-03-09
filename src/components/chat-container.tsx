@@ -92,7 +92,7 @@ const ChatContainer: React.FC<ChatContainerProps> = ({
             <div key={i} className="flex items-end">
               <div className="flex flex-col space-y-2 w-full pb-2">
                 <div className="flex group items-end mr-4 px-4 py-2 rounded-lg inline-block bg-gray-200 text-gray-800 rounded-bl-none">
-                  <div className="flex-1">
+                  <div className="flex-1"> 
                     {prompt}
                     {message.id && (
                       <button

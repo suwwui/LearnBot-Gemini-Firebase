@@ -1,25 +1,16 @@
-/**
- * Copyright 2024 Google LLC
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 
-import type { Metadata } from "next";
+'use client';
+
 import { Inter } from "next/font/google";
 import React from 'react';
+import Head from 'next/head';
 import "./globals.css";
 import NavLayout from "@/components/nav-layout";
 import FirebaseUserProvider from "../lib/firebase-user";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import SignInContainer from "@/components/signin-container";
+import { NotebookProvider } from "@/lib/notebookContext"
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,17 +18,25 @@ interface RootLayoutProps {
   children: React.ReactNode;
 }
 
-export const metadata: Metadata = {
-  title: "Edusys",
-  description: "Your Personalised Learning with Gemini API Firebase Extensions",
-};
-
 const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
   return (
     <html lang="en">
+      <Head>
+        <title>Edusys</title>
+        <meta name="description" content="Your Personalised Learning with Gemini API Firebase Extensions" />
+      </Head>
       <body className={inter.className}>
         <FirebaseUserProvider>
-            <NavLayout>{children}</NavLayout>
+          <NotebookProvider>
+            <Router>
+              <NavLayout>
+                <Routes>
+                  <Route path="/signin" element={<SignInContainer />} />
+                </Routes>
+                {children}
+              </NavLayout>
+            </Router>
+          </NotebookProvider>
         </FirebaseUserProvider>
       </body>
     </html>
