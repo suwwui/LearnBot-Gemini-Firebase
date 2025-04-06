@@ -67,6 +67,10 @@ export default function Gallery() {
     []
   );
 
+  const user = useContext(FirebaseUserContext);
+  const uid = user.currentUser?.uid;
+
+
   useEffect(() => {
     const unsubscribe = onSnapshot(
       query(
@@ -101,8 +105,6 @@ export default function Gallery() {
 
   const storageRef = useMemo(() => ref(getStorage(), "gallery"), []);
 
-  const user = useContext(FirebaseUserContext);
-  const uid = user.currentUser?.uid;
 
   const uploadImage = useCallback(
     async (file: File) => {
