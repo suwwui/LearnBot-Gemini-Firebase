@@ -88,7 +88,7 @@ export const NotebookProvider = ({ children }: { children: ReactNode }) => {
         title,
         content: '',
         createdAt: newDate,
-        uid: auth.currentUser?.uid,
+        id: auth.currentUser?.uid || 'unknown',
         color: randomPastelColor,
         tintColor: randomTintColor
       });

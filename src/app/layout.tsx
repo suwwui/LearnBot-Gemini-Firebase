@@ -28,7 +28,7 @@ const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
       <body className={inter.className}>
         <FirebaseUserProvider>
           <NotebookProvider>
-            <Router basename="/learnBot-gemini-app">
+            <Router >
               <NavLayout>
                 <Routes>
                   <Route path="/signin" element={<SignInContainer />} />
